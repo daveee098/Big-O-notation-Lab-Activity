@@ -1,0 +1,544 @@
+Dave Matthew Z. Asuncion - BFIS02 - Big-O notation Lab Activity Codes
+
+O(1) - Constant Time
+
+Example 1 Codes
+namespace BigONotationLab;
+
+public partial class Form1 : Form
+{
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void btnGetFirst_Click(object sender, EventArgs e)
+    {
+
+
+        int[] numbers = { 10, 20, 30, 40, 50 };
+
+        lblResult.Text = "Value at index 2: " + numbers[2];
+    }
+}
+
+Example 2 Codes
+namespace BigONotationLab;
+
+public partial class Form1 : Form
+{
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void btnGetFirst_Click(object sender, EventArgs e)
+    {
+
+
+
+        int[] numbers = { 15, 25, 35, 45, 55 };
+
+        lblResult.Text = "First element: " + numbers[0];
+    }
+}
+
+Example 3 Codes
+namespace BigONotationLab;
+
+public partial class Form1 : Form
+{
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void btnGetFirst_Click(object sender, EventArgs e)
+    {
+
+
+        int studentAge = 21;
+
+        lblResult.Text = "Stored age: " + studentAge;
+    }
+}
+
+
+O(log n) - Logarithmic Time
+
+Example 1 Codes
+namespace BigONotationLab;
+
+public partial class Form1 : Form
+{
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void btnGetFirst_Click(object sender, EventArgs e)
+    {
+
+
+
+        int[] numbers = { 10, 20, 30, 40, 50, 60, 70, 80 };
+
+        int target = 40;
+        int left = 0;
+        int right = numbers.Length - 1;
+        int position = -1;
+
+        while (left <= right)
+        {
+            int middle = (left + right) / 2;
+
+            if (numbers[middle] == target)
+            {
+                position = middle;
+                break;
+            }
+            else if (numbers[middle] < target)
+            {
+                left = middle + 1;
+            }
+            else
+            {
+                right = middle - 1;
+            }
+        }
+
+        if (position != -1)
+        {
+            lblResult.Text = "40 found at index: " + position;
+        }
+        else
+        {
+            lblResult.Text = "Number not found.";
+        }
+    }
+}
+
+
+Example 2 Codes
+namespace BigONotationLab;
+
+public partial class Form1 : Form
+{
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void btnGetFirst_Click(object sender, EventArgs e)
+    {
+
+
+
+
+        if (int.TryParse(txtNumber.Text, out int number) && number > 0)
+        {
+            int count = 0;
+            int originalNumber = number;
+
+            while (number > 1)
+            {
+                number = number / 2;
+                count++;
+            }
+
+            lblResult.Text = "Number: " + originalNumber
+                + " | Divisions: " + count;
+        }
+        else
+        {
+            lblResult.Text = "Please enter a positive number.";
+        }
+
+    }
+}
+
+Example 3 Codes
+namespace BigONotationLab;
+
+public partial class Form1 : Form
+{
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void btnGetFirst_Click(object sender, EventArgs e)
+    {
+
+
+
+
+        int[] numbers = { 5, 15, 25, 35, 45, 55, 65, 75, 85 };
+
+        if (!int.TryParse(txtTarget.Text, out int target))
+        {
+            lblResult.Text = "Please enter a valid number.";
+            return;
+        }
+
+        int left = 0;
+        int right = numbers.Length - 1;
+        int position = -1;
+        int comparisons = 0;
+
+        while (left <= right)
+        {
+            int middle = (left + right) / 2;
+            comparisons++;
+
+            if (numbers[middle] == target)
+            {
+                position = middle;
+                break;
+            }
+            else if (numbers[middle] < target)
+            {
+                left = middle + 1;
+            }
+            else
+            {
+                right = middle - 1;
+            }
+        }
+
+        if (position != -1)
+        {
+            lblResult.Text = "Found at index: " + position
+                + " | Comparisons: " + comparisons;
+        }
+        else
+        {
+            lblResult.Text = "Number not found | Comparisons: " + comparisons;
+        
+    }
+
+    }
+}
+
+O(n) - Linear Time
+
+Example 1 Codes
+namespace BigONotationLab;
+
+public partial class Form1 : Form
+{
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void btnGetFirst_Click(object sender, EventArgs e)
+    {
+
+
+        int[] numbers = { 12, 24, 36, 48, 60 };
+
+        string result = "";
+
+        foreach (int number in numbers)
+        {
+            result += number + " ";
+        }
+
+        lblResult.Text = "Numbers: " + result;
+
+    
+
+    }
+}
+
+
+Example 2 Codes
+namespace BigONotationLab
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+            int[] numbers = { 14, 27, 39, 42, 56, 68 };
+
+            if (!int.TryParse(txtTarget.Text, out int target))
+            {
+                lblResult.Text = "Please enter a valid number.";
+                return;
+            }
+
+            int position = -1;
+            int checks = 0;
+
+            foreach (int number in numbers)
+            {
+                checks++;
+
+                if (number == target)
+                {
+                    position = checks - 1;
+                    break;
+                }
+            }
+
+            if (position != -1)
+            {
+                lblResult.Text = "Found at index: " + position
+                    + " | Numbers checked: " + checks;
+            }
+            else
+            {
+                lblResult.Text = "Number not found | Numbers checked: " + checks;
+            }
+        }
+    }
+}
+
+
+Example 3 Codes
+namespace BigONotationLab
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+
+            int[] numbers = { 8, 16, 24, 32, 40 };
+            int sum = 0;
+
+            foreach (int number in numbers)
+            {
+                sum += number;
+            }
+
+            lblResult.Text = "Total sum: " + sum;
+        
+        }
+    }
+}
+
+O(n²) – Quadratic Time
+
+Example 1 Codes
+namespace BigONotationLab
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+
+
+            string result = "";
+
+            for (int i = 1; i <= 5; i++)
+            {
+                for (int j = 1; j <= 5; j++)
+                {
+                    result += (i * j) + "\t";
+                }
+
+                result += Environment.NewLine;
+            }
+
+            lblResult.Text = result;
+
+        }
+    }
+}
+
+Example 2 Codes
+namespace BigONotationLab
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+
+
+            int[] numbers = { 1, 2, 3 };
+            string result = "";
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                for (int j = 0; j < numbers.Length; j++)
+                {
+                    result += numbers[i] + " and " + numbers[j]
+                        + Environment.NewLine;
+                }
+            }
+
+            lblResult.Text = result;
+
+        }
+    }
+}
+
+
+Example 3 Codes
+namespace BigONotationLab
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+
+
+            int[] numbers = { 10, 20, 30, 20, 40, 10 };
+            string result = "";
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                for (int j = i + 1; j < numbers.Length; j++)
+                {
+                    if (numbers[i] == numbers[j])
+                    {
+                        result += "Duplicate: " + numbers[i]
+                            + Environment.NewLine;
+                    }
+                }
+            }
+
+            if (result == "")
+            {
+                result = "No duplicates found.";
+            }
+
+            lblResult.Text = result;
+
+        }
+    }
+}
+
+
+O(2ⁿ) - Exponential Time
+
+Example 1 Codes
+namespace BigONotationLab
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+
+
+            int Fibonacci(int n)
+            {
+                if (n <= 1)
+                {
+                    return n;
+                }
+
+                return Fibonacci(n - 1) + Fibonacci(n - 2);
+            }
+
+            int number = 6;
+            int result = Fibonacci(number);
+
+            lblResult.Text = "Fibonacci(" + number + ") = " + result;
+
+        }
+    }
+}
+
+Example 2 Codes
+namespace BigONotationLab
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+
+
+            int CountCalls(int n)
+            {
+                if (n <= 0)
+                {
+                    return 1;
+                }
+
+                return CountCalls(n - 1) + CountCalls(n - 1);
+            }
+
+            int number = 4;
+            int calls = CountCalls(number);
+
+            lblResult.Text = "Input: " + number
+                + " | Total calls: " + calls;
+
+        }
+    }
+}
+
+
+Example 3 Codes
+namespace BigONotationLab
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+       
+        
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            string output = "";
+            GenerateStrings(3, "", ref output);
+            lblResult.Text = output;
+        }
+
+        private void GenerateStrings(int n, string current, ref string result)
+        {
+            if (n == 0)
+            {
+                result += current + Environment.NewLine;
+                return;
+            }
+
+            GenerateStrings(n - 1, current + "0", ref result);
+            GenerateStrings(n - 1, current + "1", ref result);
+        }
+    }
+}
+
+
+
